@@ -130,6 +130,11 @@ function notify.dismiss(opts)
   return global_instance.dismiss(opts)
 end
 
+--- Return count of active notifications
+function notify.active()
+  return global_instance.active()
+end
+
 ---@class notify.DismissOpts
 ---@field pending boolean Clear pending notifications
 ---@field silent boolean Suppress notification that pending notifications were dismissed.

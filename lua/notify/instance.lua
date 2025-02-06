@@ -205,6 +205,12 @@ return function(user_config, inherit, global_config)
     end
   end
 
+  function instance.active()
+    if service then
+      return service:active()
+    end
+  end
+
   function instance.pending()
     return service and service:pending() or {}
   end

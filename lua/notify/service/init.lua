@@ -30,7 +30,7 @@ end
 function NotificationService:_run()
   self._running = true
   local succees, updated =
-    pcall(self._animator.render, self._animator, self._pending, 1 / self._fps)
+      pcall(self._animator.render, self._animator, self._pending, 1 / self._fps)
   if not succees then
     print("Error running notification service: " .. updated)
     self._running = false
@@ -103,6 +103,15 @@ function NotificationService:dismiss(opts)
       vim.notify("Cleared " .. cleared .. " pending notifications")
     end
   end
+end
+
+function NotificationService:active()
+  local notif_wins = vim.tbl_keys(self._animator.win_stages)
+  local i = 0
+  for _, _ in pairs(notif_wins) do
+    i = i + 1
+  end
+  return i
 end
 
 function NotificationService:pending()
